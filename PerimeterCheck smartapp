@@ -1,0 +1,44 @@
+definition(
+    name: "Perimeter Check",
+    namespace: "dzelenka",
+    author: "Chris Hanson",
+    description: "Turn on a light when the perimeter is secure, and turn it off when the perimeter is broken.",
+    category: "Safety & Security",
+    iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
+    iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
+    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png")
+
+preferences {
+	section ("Perimeter devices:") {
+		input "contacts", "capability.contactSensor", title: "Which?", multiple: true
+	}
+	section ("Turn on light:") {
+		input "perimeterSwitch", "capability.switch"
+	}
+}
+
+def installed() {
+	initialize()
+}
+
+def updated() {
+	unsubscribe()
+	initialize()
+}
+
+def initialize() {
+	subscribe(contacts, "contact", contactsHandler)
+}
+
+def contactsHandler(evt) {
+	log.debug "EV $evt.value"
+	if (evt.value == "open") {
+		perimeterSwitch.off()
+	} else if ( ! anyOpen(contacts) ) {
+		perimeterSwitch.on()
+	}
+}
+
+def anyOpen(obj) {
+	return obj.currentValue("contact").toString().contains("open")
+}
