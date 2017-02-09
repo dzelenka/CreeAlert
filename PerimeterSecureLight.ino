@@ -4,14 +4,8 @@
 
 #define PIN_CREE_PWM   2
 #define PIN_CREE_ONOFF 3
-#define PIN_LED_RED    13
 #define PIN_LED_GREEN  12
-
-#define debugging true
-
-//******************************************************************************************
-// Global Variables
-//******************************************************************************************
+#define PIN_LED_RED    13
 
 //******************************************************************************************
 void setup() {
@@ -28,5 +22,5 @@ void loop() {
     digitalWrite(PIN_LED_GREEN,LOW);
     digitalWrite(PIN_LED_RED,!digitalRead(PIN_LED_RED)); //causes it to blink
   }
-  delay(350);
+  delay(250); // blink rate
 }
