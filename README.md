@@ -16,7 +16,7 @@ The device uses the standard Cree Bulb device driver inside of SmartThings.
 
 The Arduino simple checks the On/Off status of the Cree Zigbee board. When it's on, the green LED is lit. When it's not, the red LED is blinked.
 
-I printed a nylon case that fits over the breadboard. I'll mount it near the door where I can see it as I leave the house.
+I printed a nylon case that fits over the breadboard. (I uploaded the STL file) I'll mount it near the door where I can see it as I leave the house.
 
 ## Code
 CreeAlert consists of two parts:
