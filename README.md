@@ -39,8 +39,8 @@ After removing the Zigbee board from the Cree Connected bulb, attach it to the A
  - Zigbee Board Pin 3 to Arduino Pin 2 (PWM) (not used)
  - Zigbee Board Pin 4 to Arduino Pin 3 (On/Off)
  - Resistor between Arduino GND and LED's (I hid mine under the controller chip. See photos)
- - Red LED to Arduino Pin 13
- - Green LED to Arduino Pin 12
+ - Red LED between Arduino Pin 13 and resistor
+ - Green LED between Arduino Pin 12 and resistor
   
 Power and Ground to the Cree Zigbee board.
 ![screenshot](https://github.com/dzelenka/CreeAlert/blob/master/P1000973.JPG)
