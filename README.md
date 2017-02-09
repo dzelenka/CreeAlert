@@ -1,23 +1,26 @@
 ## CreeAlert
 Use a Cree Zigbee radio to create an alert light
 
-![screenshot](https://github.com/dzelenka/CreeRelays/blob/master/P1000969.JPG)
+![screenshot](https://github.com/dzelenka/CreeAlert/blob/master/P1000978.JPG)
 
-This project was inspired by the ogiewon/CreeRelays project. He pulled a Cree Connected bulb apart and used it to control relays. I've created an even simpler project
-This is a fork of the ogiewon/CreeRelays project. I've changed the little Arduino model, but otherwise duplicated his equipment. I wanted to take advantage of his work to build a functional 2x garage door opener. I eventually drifted away from all his code, but we still owe him for the original good work and inspiration!
+This project was inspired by the ogiewon/CreeRelays project. He pulled a Cree Connected bulb apart and used the Zigbee board to control relays. I've created an even simpler project, a visual alert that tells me if my house perimeter is secure (all the doors and windows are closed).
 
 ## Overview
-ogiewon wrote a device driver for his hardware device. I used a different paradigm for the project...
+This project creates a device for use in a SmartThings environment. A smartapp watches all my perimeter devices and lights a green light when the perimeter is all closed, and blinks a red light if any of the perimeter devices is open.
+
+It uses an Arduino, a Zigbee board from a Cree Connected bulb, and LED's, a resistor, and a tiny breadboard.
+
+I printed a nylon case that fits over the breadboard.
 
 ## Code
-CreeRelays consists of two parts:
-- The CreeAlert Arduino sketch
-- The CreeAlert smartapp
+CreeAlert consists of two parts:
+- An Arduino sketch
+- A smartapp
 
 ## Hardware Requirements
 CreeRelays requires:
 - Arduino Nano, UNO, or similar
-- Cree Connected LED Bulb's Zigbee Communication Board
+- Cree Connected LED Bulb's Zigbee Board
 - Red and Green LED's
 - 300 ohm resistor
 
@@ -27,18 +30,11 @@ Join your Cree Connected Bulb to your hub using your phone's SmartThings App BEF
 After removing the Zigbee board from the Cree Connected bulb, attach it to the Arduino as follows:
  - Zigbee Board Pin 1 to Arduino GND
  - Zigbee Board Pin 2 to Arduino 3.3V
- - Zigbee Board Pin 3 to Arduino Pin 2 (PWM)
- - Zigbee Board Pin 4 to Arduino Pin 3 (On/Off) (not used by my code)
- - Relay GND to Arduino GND
- - Relay IN1 to Arduino Pin 4
- - Relay IN2 to Arduino Pin 5
- - Relay VCC to Arduino 5V
+ - Zigbee Board Pin 3 to Arduino Pin 2 (PWM) (not used)
+ - Zigbee Board Pin 4 to Arduino Pin 3 (On/Off)
+ - Resistor between Arduino GND and LED's
+ - Red LED to Arduino Pin 13
+ - Green LED to Arduino Pin 12
   
-##CreeRelay to Garage Door Buttons
-The original project ogiewon/CreeRelays was a proof of concept. I've simplified the code and tried to make it more SmartThings like. I've got a working prototype and intend to connect it to an Adafruit Metro Mini 328. I'll 3D print a case and install it in my garage. Pictures to follow...
-
-My smartapp allows multiple button devices to activate the relays. I could have a physical fob with a button in the car to replace my existing door opener. 
-
-Update: Here are some snaps of my final result, ready to mount in the garage:
 ![screenshot](https://github.com/dzelenka/CreeRelays/blob/master/P1000970.JPG)
 ![screenshot](https://github.com/dzelenka/CreeRelays/blob/master/P1000971.JPG)
